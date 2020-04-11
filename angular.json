@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
             "scripts": []
           },
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-weather-app"
+    }
+  },
+  "defaultProject": "angular-weather-app",
+  "cli": {
+    "analytics": "b293efd4-6520-4539-a8bc-e03b57d8cad9"
+  }
 }
