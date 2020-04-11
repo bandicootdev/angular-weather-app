@@ -20,12 +20,12 @@
     </div>
     <div class="col-md-6">
       <div *ngIf="weather" class="card card-body">
-        <p>Temperatura: {{weather.main.temp}} °C</p>
-        <p>Latitud: {{weather.coord.lat}}</p>
-        <p>Longitud: {{weather.coord.lon}}</p>
-        <p>Humedad: {{weather.main.humidity}}</p>
-        <p>Presion: {{weather.main.pressure}}</p>
-        <p>Descripcion: {{weather.weather[0].description}}</p>
+        <p class="font-italic">Temperatura: {{weather.main.temp}} °C</p>
+        <p class="font-italic">Latitud: {{weather.coord.lat}}</p>
+        <p class="font-italic">Longitud: {{weather.coord.lon}}</p>
+        <p class="font-italic">Humedad: {{weather.main.humidity}}</p>
+        <p class="font-italic">Presion: {{weather.main.pressure}}</p>
+        <p class="font-italic">Descripcion: {{weather.weather[0].description}}</p>
       </div>
     </div>
   </div>
