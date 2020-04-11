@@ -11,6 +11,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class AppComponent implements OnInit {
 
   weather;
+  city: string;
+  contry: string;
 
   constructor(private weatherService: WeatherService, private spinnerService: NgxSpinnerService) {
 
@@ -25,6 +27,8 @@ export class AppComponent implements OnInit {
       .subscribe(
         res => {
           this.weather = res;
+          this.city;
+          this.contry;
           this.spinnerService.hide();
         },
         err => {
@@ -58,6 +62,8 @@ export class AppComponent implements OnInit {
   submitLocation(cityName: HTMLInputElement, countryCode: HTMLInputElement) {
     if (cityName.value && countryCode.value) {
       this.getWeather(cityName.value, countryCode.value);
+      this.city = cityName.value;
+      this.contry = countryCode.value;
       cityName.value = '';
       countryCode.value = '';
     } else {

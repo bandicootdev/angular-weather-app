@@ -20,12 +20,15 @@
     </div>
     <div class="col-md-6">
       <div *ngIf="weather" class="card card-body">
-        <p class="font-italic">Temperatura: {{weather.main.temp}} °C</p>
-        <p class="font-italic">Latitud: {{weather.coord.lat}}</p>
-        <p class="font-italic">Longitud: {{weather.coord.lon}}</p>
-        <p class="font-italic">Humedad: {{weather.main.humidity}}</p>
-        <p class="font-italic">Presion: {{weather.main.pressure}}</p>
-        <p class="font-italic">Descripcion: {{weather.weather[0].description}}</p>
+        <h2 class="text-center d-block btn-primary p-2">{{this.city | uppercase}}</h2>
+        <div class="mt-2">
+          <p class="font-italic "><strong>Temperatura:</strong> {{weather.main.temp}} °C</p>
+          <p class="font-italic"><strong>Latitud:</strong> {{weather.coord.lat}}</p>
+          <p class="font-italic"><strong>Longitud:</strong> {{weather.coord.lon}}</p>
+          <p class="font-italic"><strong>Humedad:</strong> {{weather.main.humidity}}</p>
+          <p class="font-italic"><strong>Presion:</strong> {{weather.main.pressure}}</p>
+          <p class="font-italic"><strong>Descripcion:</strong> {{weather.weather[0].description}}</p>
+        </div>
       </div>
     </div>
   </div>
