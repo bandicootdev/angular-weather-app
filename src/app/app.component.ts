@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from './services/weather.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit {
 
   weather;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private spinnerService: NgxSpinnerService) {
 
   }
 
@@ -19,10 +20,38 @@ export class AppComponent implements OnInit {
   }
 
   getWeather(cityName: string, countryCode: string) {
+    this.spinnerService.show();
     this.weatherService.getWeather(cityName, countryCode)
       .subscribe(
-        res => this.weather = res,
-        err => console.log(err)
+        res => {
+          this.weather = res;
+          this.spinnerService.hide();
+        },
+        err => {
+          console.log(err);
+          if (err.status === 404) {
+            this.spinnerService.hide();
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: `No se encontro ningun resultado`,
+            });
+          } else if (err.name === 'HttpErrorResponse') {
+            this.spinnerService.hide();
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: `No posee conexion a internet`,
+            });
+          } else if (err.message) {
+            this.spinnerService.hide();
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: `FATAL ERROR: ${err.message}`,
+            });
+          }
+        }
       );
   }
 
